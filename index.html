@@ -1,16 +1,55 @@
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="target-densitydpi=device-dpi, initial-scale=1.0, user-scalable=no">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Mi página</title>
+<style type="text/css">
+body {
+   margin: 0;
+   padding: 0;
+}
+</style>
+<meta charset="utf-8">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="cache-control" content="max-age=0" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+<meta http-equiv="pragma" content="no-cache" />
+<script src="https://ssl.p.jwpcdn.com/player/v/8.21.0/jwplayer.js"></script>
+<script> jwplayer.key = 'XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo';</script>
+<body>
+<div id="player"></div>
+<script>
+var playerInstance= jwplayer("player");
 
-</head>
 
-<body bgcolor="black">
+playerInstance.setup({
 
+	playlist: [{
+		"sources": [
+			{
+				"default": false,
+				"type": "hls",
+				"file": "https://streaming02.gbasat.com.ar:19360/bayrestv/bayrestv.m3u8",
+				"x-drm": {
+					"clearkey": { "keyId": 0, "key": 0 }
+				},
+				"label": "0"
+			}
+		]
+	}],
+	width: "100%",
+	height: "100%",
+	aspectratio: "16:9",
+	autostart: false,
+	cast: {},
+	sharing: {}
+});
 
+if (getLang == "") {
+	getLang = 0;
+}
+
+jwplayer().on('play', function(e) {
+  jwplayer().setCurrentAudioTrack(getLang);
+});
+</script>
 </body>
 </html>
